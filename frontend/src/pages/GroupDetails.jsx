@@ -18,7 +18,7 @@ export default function GroupDetails() {
 
   const fetchExpenses = async () => {
     const res = await axios.get(
-      `http://localhost:5000/api/groups/${id}/expenses`,
+      `${import.meta.env.VITE_BASE_URL}/api/groups/${id}/expenses`,
       { headers }
     );
     setExpenses(res.data);

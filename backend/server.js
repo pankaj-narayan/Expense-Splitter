@@ -9,26 +9,29 @@ require("dotenv").config();
 
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
+// Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/groups", groupRoutes);
 app.use("/api/expenses", expenseRoutes);
 app.use("/api/balances", balanceRoutes);
 
-const PORT = process.env.PORT || 3000;
-
-const startServer = async () => {
-  try {
+// DB Connection (Vercel-safe)
+let isConnected = false;
+const connectOnce = async () => {
+  if (!isConnected) {
     await connectDB();
-    app.listen(PORT, () => {
-      console.log("Server is running on port " + PORT);
-    });
-  } catch (error) {
-    console.error("Failed to start server:", error.message);
-    process.exit(1);
+    isConnected = true;
   }
 };
 
-startServer();
+app.use(async (req, res, next) => {
+  await connectOnce();
+  next();
+});
+
+
+module.exports = app;

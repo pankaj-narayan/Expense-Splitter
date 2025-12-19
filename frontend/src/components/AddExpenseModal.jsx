@@ -16,8 +16,7 @@ export default function AddExpenseModal({ groupId, onClose, onAdded }) {
   /* ---------------- FETCH MEMBERS ---------------- */
   useEffect(() => {
     const fetchMembers = async () => {
-      const res = await axios.get(
-        `http://localhost:5000/api/groups/${groupId}/members`,
+      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/groups/${groupId}/members`,
         { headers }
       );
 
@@ -64,7 +63,7 @@ export default function AddExpenseModal({ groupId, onClose, onAdded }) {
       }));
     }
 
-    await axios.post("http://localhost:5000/api/expenses", payload, {
+    await axios.post(`${import.meta.env.VITE_BASE_URL}/api/expenses`, payload, {
       headers,
     });
 

@@ -19,12 +19,12 @@ export default function Dashboard() {
 
   const fetchData = async () => {
     try {
-      const g = await axios.get("http://localhost:5000/api/groups", {
+      const g = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/groups`, {
         headers,
       });
       setGroups(g.data);
 
-      const b = await axios.get("http://localhost:5000/api/balances", {
+      const b = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/balances`, {
         headers,
       });
       setBalances(b.data);
@@ -41,8 +41,7 @@ export default function Dashboard() {
     if (!groupName.trim()) return;
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/groups",
+      const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/groups`,
         { name: groupName, members: [] },
         { headers }
       );
@@ -59,8 +58,7 @@ export default function Dashboard() {
   };
 
   const settleBalance = async (from, to) => {
-    await axios.post(
-      "http://localhost:5000/api/balances/settle",
+    await axios.post(`${import.meta.env.VITE_BASE_URL}/api/balances/settle`,
       { from, to },
       { headers }
     );

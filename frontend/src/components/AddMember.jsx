@@ -13,7 +13,7 @@ export default function AddMember({ groupId, onAdded }) {
 
     try {
       await axios.post(
-        `http://localhost:5000/api/groups/${groupId}/add-member`,
+        `${import.meta.env.VITE_BASE_URL}/api/groups/${groupId}/add-member`,
         { email },
         { headers }
       );
