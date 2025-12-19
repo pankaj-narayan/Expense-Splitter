@@ -13,12 +13,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Routes
-app.use("/api/auth", authRoutes);
-app.use("/api/groups", groupRoutes);
-app.use("/api/expenses", expenseRoutes);
-app.use("/api/balances", balanceRoutes);
-
 // DB Connection (Vercel-safe)
 let isConnected = false;
 const connectOnce = async () => {
@@ -33,5 +27,10 @@ app.use(async (req, res, next) => {
   next();
 });
 
+// Routes
+app.use("/api/auth", authRoutes);
+app.use("/api/groups", groupRoutes);
+app.use("/api/expenses", expenseRoutes);
+app.use("/api/balances", balanceRoutes);
 
 module.exports = app;
