@@ -1,0 +1,86 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import AddExpenseModal from "../components/AddExpenseModal";
+import AddMember from "../components/AddMember";
+import "../styles/groupDetails.css";
+
+export default function GroupDetails() {
+  const { id } = useParams();
+  const token = localStorage.getItem("token");
+
+  const [expenses, setExpenses] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+
+  const fetchExpenses = async () => {
+    const res = await axios.get(
+      `http://localhost:5000/api/groups/${id}/expenses`,
+      { headers }
+    );
+    setExpenses(res.data);
+  };
+
+  console.log(expenses);
+  useEffect(() => {
+    fetchExpenses();
+  }, []);
+
+  return (
+    <div className="group-details-page">
+      <div className="dashboard">
+        {/* HEADER */}
+        <div className="dashboard-header">
+          Group Expenses
+          <button className="create-btn" onClick={() => setShowModal(true)}>
+            + Add Expense
+          </button>
+        </div>
+
+        {/* ADD MEMBER (THIS WAS MISSING) */}
+        <div className="card">
+          <h4>Add Member</h4>
+          <AddMember groupId={id} onAdded={fetchExpenses} />
+        </div>
+
+        {/* EXPENSE LIST */}
+        <div className="card">
+          {expenses.length === 0 && <p>No expenses yet</p>}
+
+          {expenses.map((e) => (
+            <div key={e._id} className="group-item">
+              <div style={{ fontWeight: "bold" }}>
+                {e.description} — ₹{e.amount}
+              </div>
+
+              <div style={{ fontSize: "14px", color: "#555" }}>
+                Paid by: {e.paidBy?.name}
+              </div>
+
+              {/* MEMBER SHARES */}
+              <div style={{ marginTop: "6px" }}>
+                {e.splits.map((s) => (
+                  <div key={s.userId._id} style={{ fontSize: "14px" }}>
+                    • {s.userId.name} owes ₹{s.amount}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* ADD EXPENSE MODAL */}
+        {showModal && (
+          <AddExpenseModal
+            groupId={id}
+            onClose={() => setShowModal(false)}
+            onAdded={fetchExpenses}
+          />
+        )}
+      </div>
+    </div>
+  );
+}

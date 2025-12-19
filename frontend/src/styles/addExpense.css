@@ -1,0 +1,106 @@
+.split-buttons {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.split-buttons button {
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 6px 12px;      /* smaller */
+  border-radius: 6px;     /* slightly tighter */
+  font-size: 12px;        /* smaller text */
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.split-buttons button:hover {
+  background-color: #1d4ed8;
+}
+
+.split-buttons button.active {
+  background-color: #1e3a8a;
+}
+
+.modal input {
+  margin-top: 5px;
+}
+
+.paid-by-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  background: #f9fafb;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+
+  margin-top: 12px;
+}
+
+.paid-by-container label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.paid-by-container select {
+  min-width: 140px;
+  padding: 8px 12px;
+
+  font-size: 14px;
+  color: #111827;
+
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+
+  cursor: pointer;
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Focus effect */
+.paid-by-container select:focus {
+  border-color: #1d4ed8;
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+}
+
+/* Hover effect */
+.paid-by-container select:hover {
+  border-color: #1d4ed8;
+}
+
+.split-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.split-buttons button {
+  padding: 6px 12px;
+  font-size: 13px;
+
+  border-radius: 6px;
+  border: 1px solid #1d4ed8;
+
+  background: white;
+  color: #1d4ed8;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Hover */
+.split-buttons button:hover {
+  background: #e0e7ff;
+}
+
+/* ACTIVE BUTTON */
+.split-buttons button.active {
+  background: #1d4ed8;
+  color: white;
+}

@@ -1,0 +1,136 @@
+/* ===== Page Wrapper ===== */
+.group-details-page .dashboard {
+  min-height: 100vh;
+  padding: 32px;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* ===== Header ===== */
+.group-details-page .dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px 24px;
+  border-radius: 16px;
+
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+
+  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+  box-shadow: 0 10px 30px rgba(29, 78, 216, 0.35);
+
+  margin-bottom: 28px;
+}
+
+/* Add Expense Button */
+.group-details-page .create-btn {
+  background: rgba(255, 255, 255, 0.18);
+  color: white;
+  border: none;
+
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.25s ease;
+}
+
+.group-details-page .create-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
+  transform: translateY(-2px);
+}
+
+/* ===== Cards (Glass Style) ===== */
+.group-details-page .card {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(12px);
+
+  border-radius: 20px;
+  padding: 22px;
+  margin-bottom: 24px;
+
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Card headings */
+.group-details-page .card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #111827;
+}
+
+/* ===== EXPENSE GRID ===== */
+.group-details-page .card:last-of-type {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+/* ===== Expense Item ===== */
+.group-details-page .group-item {
+  background: linear-gradient(135deg, #ffffff, #f9fafb);
+  border-radius: 16px;
+  padding: 16px;
+
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+
+  transition: all 0.25s ease;
+}
+
+.group-details-page .group-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Expense Title */
+.group-details-page .group-item > div:first-child {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+/* Paid by text */
+.group-details-page .group-item > div:nth-child(2) {
+  font-size: 13px;
+  color: #475569;
+  margin-bottom: 10px;
+}
+
+/* ===== Member Shares ===== */
+.group-details-page .group-item div div {
+  font-size: 13px;
+  color: #374151;
+  padding: 3px 0;
+}
+
+
+/* ===== Empty State ===== */
+.group-details-page .card p {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .group-details-page .dashboard {
+    padding: 20px;
+  }
+
+  .group-details-page .dashboard-header {
+    font-size: 18px;
+  }
+}
